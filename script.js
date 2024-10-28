@@ -1,19 +1,47 @@
-function showDiv(){
-    document.getElementById("answer").style.display = "block";
-}
+const app = document.querySelector("#app");
+const button = document.querySelector("#button");
+let tipAmount;
+let totalAmount;
+let tipPercent;
+let percent = document.getElementById("tipSelect");
 
-function changeColor(){
-    var hex_numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F"];
+//assign tip percent via selector
+percent.addEventListener("change", function handleChange(event) {
+  tipPercent = Number(event.target.value);
+  console.log(tipPercent);
+});
 
-    var hexcode = '';
+button.addEventListener("click", function () {
+  const input = app.querySelector("#form input");
+  const userInput = input.value;
+  input.value = "";
+  calculateTip(userInput);
+  calculateTotal(userInput);
+  updateTip();
+  updateTotal();
+});
 
-    for(var i = 0;i < 6;i++){
-        var random_index = Math.floor(Math.random() * hex_numbers.length);
+//tip calculation
+const calculateTip = (userInput) => {
+  tipAmount = Math.round(userInput * tipPercent);
+};
 
-        hexcode += hex_numbers[random_index]
-    }
-    document.getElementById("hex-code").innerHTML
-    = hexcode;
-    document.getElementsByTagName("body")[0].style.background
-    = "#" + hexcode;
-}
+//get total plus tip
+const calculateTotal = (userInput) => {
+  totalAmount = Number(tipAmount) + Number(userInput);
+};
+
+//return tip amount to page
+const updateTip = () => {
+  //next line allows us to always have two digits after a decimal point
+  tipAmount = tipAmount.toFixed(2);
+
+  document.getElementById("tipAmount").innerHTML = `$${tipAmount}`;
+};
+
+//return total amount to page
+const updateTotal = () => {
+  //next line allows us to always have two digits after a decimal point
+  totalAmount = totalAmount.toFixed(2);
+  document.getElementById("totalAmount").innerHTML = `$${totalAmount}`;
+};
