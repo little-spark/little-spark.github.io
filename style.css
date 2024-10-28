@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,600&display=swap');
+
+
+body {
+    font-family: 'Lora', serif;
+
+}
+
+h1 {
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+h2 {
+    font-size: 1rem;
+}
+
+.container {
+    width: 95%;
+    height: 100vh;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.global-btn {
+    text-align: center;
+    margin-top:20px;
+}
+
+.btn-primary, .btn-primary:active, .btn-primary:visited, .btn-primary:focus{
+    background-color:#000000;
+    border:none;
+    box-shadow:none;
+}
+
+.btn-primary:hover {
+    background-color:white;
+    border: 1px solid black;
+    color: black;
+}
+
+.hex-colors h2 {
+    margin-top:20px;
+}
+
+#answer {
+    display: none;
+}
+
+@media (max-width:320px) {
+    h1 {
+        font-size:1.5rem;
+    }
+    h2 {
+        font-size: .75rem;
+    }
+}
